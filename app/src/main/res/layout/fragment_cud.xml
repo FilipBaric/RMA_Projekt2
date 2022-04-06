@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <!-- ************ -->
+
+        <TextView
+            android:id="@+id/labelaIme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/labelaIme" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp" />
+
+        <!-- ************ -->
+
+        <TextView
+            android:id="@+id/labelaPrezime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/labelaPrezime" />
+
+        <EditText
+            android:id="@+id/component"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/novaKomponenta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/labelaNovi" />
+
+        <Button
+            android:id="@+id/uslikajKomponentu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/labelaUslikaj" />
+
+        <Button
+            android:id="@+id/promjenaKomponente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/labelaPromjeni" />
+
+        <Button
+            android:id="@+id/obrisiKomponentu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/labelaObrisi" />
+
+        <Button
+            android:id="@+id/nazad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/labelaNazad" />
+
+        <ImageView
+            android:id="@+id/slikaCUD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:srcCompat="@tools:sample/avatars"/>
+
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

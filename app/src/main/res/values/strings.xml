@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Projekt2RMA</string>
+    <string name="labelaSifra">Šifra</string>
+    <string name="labelaIme">Name</string>
+    <string name="labelaPrezime">Component</string>
+    <string name="labelaNazad">Nazad</string>
+    <string name="labelaSlika">Slika komponente</string>
+    <string name="labelaNovi">Kreiraj novu komponentu</string>
+    <string name="labelaPromjeni">Promjeni komponentu</string>
+    <string name="labelaObrisi">Obriši komponentu</string>
+    <string name="labelaUslikaj">Uslikaj komponentu</string>
+</resources>
