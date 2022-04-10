@@ -5,6 +5,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,9 +22,9 @@ public class PCPart {
     @ColumnInfo(name="komponente")
     @NonNull
     private String name;
-    private String component;
+    private int component;
     private String putanjaSlika;
-    private String datumKupnje;
+    private Date datumKupnje;
 
     public int getId() {
         return id;
@@ -41,11 +43,11 @@ public class PCPart {
         this.name = name;
     }
 
-    public String getComponent() {
+    public int getComponent() {
         return component;
     }
 
-    public void setComponent(String component) {
+    public void setComponent(int component) {
         this.component = component;
     }
 
@@ -57,11 +59,11 @@ public class PCPart {
         this.putanjaSlika = putanjaSlika;
     }
 
-    public String getDatumKupnje() {
+    public Date getDatumKupnje() {
         return datumKupnje;
     }
 
-    public void setDatumKupnje(String datumKupnje) {
+    public void setDatumKupnje(Date datumKupnje) {
         this.datumKupnje = datumKupnje;
     }
 }

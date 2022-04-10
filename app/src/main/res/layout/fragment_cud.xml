@@ -41,8 +41,23 @@
             android:layout_height="wrap_content"
             android:text="@string/labelaPrezime" />
 
-        <EditText
+        <Spinner
             android:id="@+id/component"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="5dp"
+            android:entries="@array/komponente"/>
+
+        <TextView
+            android:id="@+id/labeladatumKupnje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/labeladatumKupnje" />
+
+        <DatePicker
+            android:id="@+id/datumKupnje"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp" />
@@ -82,7 +97,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:srcCompat="@tools:sample/avatars"/>
-
 
 
     </LinearLayout>

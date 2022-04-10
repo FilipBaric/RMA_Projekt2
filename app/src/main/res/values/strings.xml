@@ -3,6 +3,7 @@
     <string name="labelaSifra">Šifra</string>
     <string name="labelaIme">Name</string>
     <string name="labelaPrezime">Component</string>
+    <string name="labeladatumKupnje">Datum Kupnje</string>
     <string name="labelaNazad">Nazad</string>
     <string name="labelaSlika">Slika komponente</string>
     <string name="labelaNovi">Kreiraj novu komponentu</string>

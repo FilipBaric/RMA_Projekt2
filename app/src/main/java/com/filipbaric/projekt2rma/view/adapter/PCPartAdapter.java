@@ -20,10 +20,10 @@ import java.util.List;
 import com.filipbaric.projekt2rma.R;
 import com.filipbaric.projekt2rma.model.PCPart;
 
-public class PCPartAdapter extends ArrayAdapter<PCPart> implements View.OnTouchListener{
+public class PCPartAdapter extends ArrayAdapter<PCPart>{
 
     private List<PCPart> itemList;
-    private PCPartClickListener PCPartClickListener;
+    private PCPartClickListener pcPartClickListener;
     private int resource;
     private Context context;
 
@@ -32,14 +32,7 @@ public class PCPartAdapter extends ArrayAdapter<PCPart> implements View.OnTouchL
 
         this.resource = resource;
         this.context = context;
-        this.PCPartClickListener = PCPartClickListener;
-    }
-
-
-    @Override
-    public boolean onTouch(View view, MotionEvent motionEvent) {
-        view.getParent().requestDisallowInterceptTouchEvent(true);
-        return false;
+        this.pcPartClickListener = pcPartClickListener;
     }
 
     private static class ViewHolder {
@@ -48,7 +41,7 @@ public class PCPartAdapter extends ArrayAdapter<PCPart> implements View.OnTouchL
         private TextView name;
         private TextView component;
         private ImageView putanjaSlika;
-        private TextView date;
+        private TextView datumKupnje;
 
 
     }
@@ -71,10 +64,11 @@ public class PCPartAdapter extends ArrayAdapter<PCPart> implements View.OnTouchL
                 viewHolder.name = view.findViewById(R.id.name);
                 viewHolder.putanjaSlika = view.findViewById(R.id.putanjaSlika);
                 viewHolder.component = view.findViewById(R.id.component);
-                viewHolder.date = view.findViewById(R.id.date);
+                viewHolder.datumKupnje = view.findViewById(R.id.datumKupnje);
 
-                viewHolder.component.setOnTouchListener(this::onTouch);
-                viewHolder.component.setMovementMethod(ScrollingMovementMethod.getInstance());
+                //viewHolder.component.setOnTouchListener(this::onTouch);
+                //viewHolder.component.setMovementMethod(ScrollingMovementMethod.getInstance());
+
             } else {
                 viewHolder = (ViewHolder) view.getTag();
 
@@ -87,11 +81,11 @@ public class PCPartAdapter extends ArrayAdapter<PCPart> implements View.OnTouchL
 
                 viewHolder.id.setText(String.valueOf(PCPart.getId()));
                 viewHolder.name.setText(PCPart.getName());
-                viewHolder.component.setText(PCPart.getComponent());
-                viewHolder.date.setText(PCPart.getDatumKupnje());
+                viewHolder.component.setText(context.getResources().getStringArray(R.array.komponente)[PCPart.getComponent()]);
+                viewHolder.datumKupnje.setText(PCPart.getDatumKupnje());
 
-                viewHolder.date.setOnTouchListener(this::onTouch);
-                viewHolder.date.setMovementMethod(ScrollingMovementMethod.getInstance());
+                //viewHolder.datumKupnje.setOnTouchListener(this::onTouch);
+                //viewHolder.datumKupnje.setMovementMethod(ScrollingMovementMethod.getInstance());
 
                 if (PCPart.getPutanjaSlika() == null) {
                     Picasso.get().load(R.drawable.nepoznato).fit().centerCrop().into(viewHolder.putanjaSlika);
@@ -102,7 +96,7 @@ public class PCPartAdapter extends ArrayAdapter<PCPart> implements View.OnTouchL
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) { PCPartClickListener.onItemClick(PCPart); }
+                public void onClick(View v) { pcPartClickListener.onItemClick(PCPart); }
             });
         }
         return view;

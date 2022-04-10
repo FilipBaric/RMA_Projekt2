@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="komponente">
+        <item>Processor</item>
+        <item>Graphics Card</item>
+        <item>RAM Stick</item>
+        <item>HDD</item>
+        <item>SSD</item>
+    </string-array>
+</resources>

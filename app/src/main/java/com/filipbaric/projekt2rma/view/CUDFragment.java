@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
@@ -29,7 +30,9 @@ import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class CUDFragment extends Fragment {
@@ -39,7 +42,9 @@ public class CUDFragment extends Fragment {
     @BindView(R.id.name)
     EditText name;
     @BindView(R.id.component)
-    EditText component;
+    Spinner component;
+    @BindView(R.id.datumKupnje)
+    EditText datumKupnje;
     @BindView(R.id.slikaCUD)
     ImageView slikaCUD;
 
@@ -72,6 +77,9 @@ public class CUDFragment extends Fragment {
             definirajNovuKomponentu();
             return view;
         }
+        name.setText(model.getPcPart().getName());
+        component.setSelection(model.getPcPart().getComponent());
+        datumKupnje.setText(model.getPcPart().getDatumKupnje().toString());
         definirajPromjenaBrisanjeOsoba();
 
         return view;
@@ -91,16 +99,18 @@ public class CUDFragment extends Fragment {
 
     private void novaKomponenta() {
         model.getPcPart().setName(name.getText().toString());
-        model.getPcPart().setComponent(component.getText().toString());
+        model.getPcPart().setComponent(component.getSelectedItemPosition());
+        //model.getPcPart().setDatumKupnje(datumKupnje.getText().toString());
         model.dodajNoviPCPart();
         nazad();
+
     }
 
     private void definirajPromjenaBrisanjeOsoba() {
         PCPart o = model.getPcPart();
         novaKomponenta.setVisibility(View.GONE);
         name.setText(o.getName());
-        component.setText(o.getComponent());
+        component.setSelection(o.getComponent());
         Log.d("Putanja slika", "->" + o.getPutanjaSlika());
         if (o.getPutanjaSlika() != null) {
             Picasso.get().load(o.getPutanjaSlika()).fit().centerCrop().into(slikaCUD);
@@ -149,7 +159,7 @@ public class CUDFragment extends Fragment {
         }
 
         Uri slikaUri = FileProvider.getUriForFile(getActivity(),
-                "jakopec.mvvmroom.provider",
+                "com.filipbaric.provider",
                 slika);
         uslikajIntent.putExtra(MediaStore.EXTRA_OUTPUT,slikaUri);
         startActivityForResult(uslikajIntent,SLIKANJE);
@@ -166,7 +176,8 @@ public class CUDFragment extends Fragment {
 
     private void promjenaKomponente(){
         model.getPcPart().setName(name.getText().toString());
-        model.getPcPart().setComponent(component.getText().toString());
+        model.getPcPart().setComponent(component.getSelectedItemPosition());
+        //model.getPcPart().setDatumKupnje(datumKupnje.getText().toString());
         model.promjeniPCPart();
         nazad();
     }
@@ -190,5 +201,4 @@ public class CUDFragment extends Fragment {
             Picasso.get().load(model.getPcPart().getPutanjaSlika()).fit().centerCrop().into(slikaCUD);
         }
     }
-
 }
