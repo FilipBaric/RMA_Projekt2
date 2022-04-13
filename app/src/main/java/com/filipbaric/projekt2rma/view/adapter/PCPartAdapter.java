@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +16,8 @@ import androidx.annotation.Nullable;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import com.filipbaric.projekt2rma.R;
@@ -77,12 +80,20 @@ public class PCPartAdapter extends ArrayAdapter<PCPart>{
             PCPart = getItem(position);
 
             if (PCPart != null) {
-                //viewHolder.name.setText(sportsEquipment.getName() + " - " + context.getResources().getStringArray(R.array.type_sport)[sportsEquipment.getType()]);
+
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(PCPart.getDatumKupnje());
 
                 viewHolder.id.setText(String.valueOf(PCPart.getId()));
                 viewHolder.name.setText(PCPart.getName());
                 viewHolder.component.setText(context.getResources().getStringArray(R.array.komponente)[PCPart.getComponent()]);
-                viewHolder.datumKupnje.setText(PCPart.getDatumKupnje());
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd. MM. yyyy.");
+                try {
+                    viewHolder.datumKupnje.setText(simpleDateFormat.format(PCPart.getDatumKupnje()));
+                }catch (Exception e){
+                    viewHolder.datumKupnje.setText("");
+                }
+
 
                 //viewHolder.datumKupnje.setOnTouchListener(this::onTouch);
                 //viewHolder.datumKupnje.setMovementMethod(ScrollingMovementMethod.getInstance());

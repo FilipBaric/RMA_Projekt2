@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -44,7 +45,7 @@ public class CUDFragment extends Fragment {
     @BindView(R.id.component)
     Spinner component;
     @BindView(R.id.datumKupnje)
-    EditText datumKupnje;
+    DatePicker datumKupnje;
     @BindView(R.id.slikaCUD)
     ImageView slikaCUD;
 
@@ -79,7 +80,9 @@ public class CUDFragment extends Fragment {
         }
         name.setText(model.getPcPart().getName());
         component.setSelection(model.getPcPart().getComponent());
-        datumKupnje.setText(model.getPcPart().getDatumKupnje().toString());
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(model.getPcPart().getDatumKupnje());
+        datumKupnje.updateDate(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH));
         definirajPromjenaBrisanjeOsoba();
 
         return view;
@@ -100,7 +103,11 @@ public class CUDFragment extends Fragment {
     private void novaKomponenta() {
         model.getPcPart().setName(name.getText().toString());
         model.getPcPart().setComponent(component.getSelectedItemPosition());
-        //model.getPcPart().setDatumKupnje(datumKupnje.getText().toString());
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.DAY_OF_MONTH,datumKupnje.getDayOfMonth());
+        c.set(Calendar.MONTH, datumKupnje.getMonth());
+        c.set(Calendar.YEAR, datumKupnje.getYear());
+        model.getPcPart().setDatumKupnje(c.getTime());
         model.dodajNoviPCPart();
         nazad();
 
