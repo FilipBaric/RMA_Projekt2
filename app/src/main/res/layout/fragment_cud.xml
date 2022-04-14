@@ -5,9 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
@@ -25,7 +29,7 @@
             android:id="@+id/labelaIme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/labelaIme" />
+            android:text="@string/labelaName" />
 
         <EditText
             android:id="@+id/name"
@@ -39,7 +43,7 @@
             android:id="@+id/labelaPrezime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/labelaPrezime" />
+            android:text="@string/labelaComponent" />
 
         <Spinner
             android:id="@+id/component"
@@ -101,5 +105,6 @@
 
 
     </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

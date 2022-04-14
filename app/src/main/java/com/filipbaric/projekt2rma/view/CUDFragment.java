@@ -48,7 +48,6 @@ public class CUDFragment extends Fragment {
     DatePicker datumKupnje;
     @BindView(R.id.slikaCUD)
     ImageView slikaCUD;
-
     @BindView(R.id.novaKomponenta)
     Button novaKomponenta;
     @BindView(R.id.uslikajKomponentu)

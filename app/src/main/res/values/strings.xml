@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Projekt2RMA</string>
     <string name="labelaSifra">Šifra</string>
-    <string name="labelaIme">Name</string>
-    <string name="labelaPrezime">Component</string>
+    <string name="labelaName">Name</string>
+    <string name="labelaComponent">Component</string>
     <string name="labeladatumKupnje">Datum Kupnje</string>
     <string name="labelaNazad">Nazad</string>
     <string name="labelaSlika">Slika komponente</string>
